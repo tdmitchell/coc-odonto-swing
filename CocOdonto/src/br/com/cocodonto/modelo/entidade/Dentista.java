@@ -14,7 +14,7 @@ public class Dentista {
 	private String nome;
 	private String rg;
 	private String cpf;
-	private SexoType sexo; // Enum que representa o sexo do paciente
+	private SexoType sexo; // Enum que representa o sexo do paciente			//não tem no original
 	private Endereco endereco;
 	private Contato contato;
 
@@ -106,7 +106,7 @@ public class Dentista {
 		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
-		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+//		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		return result;
 	}
 
@@ -151,15 +151,25 @@ public class Dentista {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Dentista [id=").append(id).append(", cro=").append(cro).append(", nome=").append(nome)
-				.append(", rg=").append(rg).append(", cpf=").append(cpf).append(", sexo=").append(sexo)
-				.append(", endereco=").append(endereco).append(", contato=").append(contato).append("]");
+		builder.append("Dentista [id= ")
+				.append(id)
+				.append(", cro= ")
+				.append(cro)
+				.append(", nome= ")
+				.append(nome)
+				.append(", rg= ")
+				.append(rg)
+				.append(", cpf= ")
+				.append(cpf)
+//				.append(", sexo= ")
+//				.append(sexo)
+				.append(", endereco= ")
+				.append(endereco)
+				.append(", contato= ")
+				.append(contato)
+				.append(" ]");
 		return builder.toString();
 	}
-
-
-	
-
 	
 	
 }

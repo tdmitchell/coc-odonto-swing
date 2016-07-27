@@ -1,6 +1,7 @@
 package br.com.cocodonto.modelo.entidade;
 
 public class Contato {
+	private long id;
 	private String email;
 	private String telefone;
 	private String celular;
@@ -11,11 +12,17 @@ public class Contato {
 
 //Métodos	
 	//Getters & Setters
-	public String getE() {
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getEmail() {
 		return email;
 	}
-	public void setE(String e) {
-		this.email = e;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getTelefone() {
 		return telefone;
@@ -37,12 +44,13 @@ public class Contato {
 		int result = 1;
 		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result
+				+ ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
 	}
 	
 	//Método equals()
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -61,6 +69,8 @@ public class Contato {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (id != other.id)
+			return false;
 		if (telefone == null) {
 			if (other.telefone != null)
 				return false;
@@ -73,7 +83,9 @@ public class Contato {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Contato [email= ")
+		builder.append("Contato [id= ")
+		.append(id)
+		.append(", email= ")
 				.append(email)
 				.append(", telefone= ")
 				.append(telefone)
@@ -82,10 +94,6 @@ public class Contato {
 				.append(" ]");
 		return builder.toString();
 	}
-	
-
-	
-	
 	
 	
 }

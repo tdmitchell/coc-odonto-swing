@@ -3,6 +3,8 @@
  */
 package br.com.cocodonto.modelo.entidade;
 
+import java.util.Date;
+
 /**
  * @author TDM-Estudo
  *
@@ -12,11 +14,19 @@ public class Paciente {
 	private String nome;
 	private String rg;
 	private String cpf;
+	private Date criacao;
 	private SexoType sexo;	//Enum que representa o sexo do paciente
 	private Endereco endereco;
 	private Contato contato;
+	private Paciente responsavelPor;	
 	
+
 //Construtor
+	public Paciente() {
+		criacao = new Date();
+		sexo = SexoType.F;
+	}
+	
 	public Paciente(long id, String nome, String rg, String cpf, SexoType sexo, Endereco endereco, Contato contato) {
 		super();
 		this.id = id;
@@ -89,15 +99,25 @@ public class Paciente {
 	public void setContato(Contato contato) {
 		this.contato = contato;
 	}
+	public Paciente getResponsavelPor() {
+		return responsavelPor;
+	}
+	public void setResponsavelPor(Paciente responsavelPor) {
+		this.responsavelPor = responsavelPor;
+	}
+	public Date getCriacao() {
+		return criacao;
+	}
+	public void setCriacao(Date criacao) {
+		this.criacao = criacao;
+	}
 
 	//Método hashCode()
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-//		result = prime * result + ((contato == null) ? 0 : contato.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-//		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
